@@ -1,0 +1,28 @@
+price:
+https://p.3.cn/prices/mgets?callback=jQuery1861715&type=1&area=4_48205_52493_0&pdtk=&pduid=1502979112936703030929&pdpin=13663078-352235&pin=13663078-352235&pdbp=0&skuIds=J_3350660&ext=11000000&source=item-pc
+callback:jQuery1861715
+type:1
+area:4_48205_52493_0
+pdtk:
+pduid:1502979112936703030929
+pdpin:13663078-352235
+pin:13663078-352235
+pdbp:0
+skuIds:J_3350660
+ext:11000000
+source:item-pc
+
+后来price这个端口总是返回验证码，估计IP被封了吧，然后把 pdtk=&pduid=1502979112936703030929 这句改成 pdtk=&pduid 就又可以了。笑，估计隔两天又会被封。
+
+
+stock:
+https://c0.3.cn/stock?skuId=3350660&area=4_48205_52493_0&venderId=1000080223&cat=670,677,679&buyNum=1&choseSuitSkuIds=&extraParam={%22originid%22:%221%22}&ch=1&fqsp=0&pduid=1502979112936703030929&pdpin=13663078-352235&detailedAdd=null&callback=jQuery8447360
+
+"stock":{"isWalMar":false,"isJDexpress":"0","self_D":{"vender":"EVGA京东自营官方旗舰店","id":1000080223,"df":null,"po":"false","deliver":"EVGA京东自营官方旗舰店","cg":"670:677:679","url":"http://mall.jd.com/index-1000080223.html","vid":1000080223,"type":0,"linkphone":""},"serviceInfo":"由 <span class='hl_red'>京东</span> 发货, 并提供售后服务. ","cla":[],"sidDely":"6","PopType":0,"dcashDesc":"","freshEdi":null,"isSam":false,"area":{"countyName":"城区","success":true,"townName":"","cityName":"渝北区","provinceName":"重庆"},"nationallySetWare":"5","stockDesc":"<strong>无货</strong>，此商品暂时售完","realSkuId":3350660,"StockStateName":"无货"
+
+
+正则表达式匹配：
+店家名称：(?<=vender":").*?(?=")
+是否有货：(?<=<strong>).*?(?=</strong>)
+
+编码方式，stock返回的response编码方式为encode("GB18030")，所以用utf-8编码后是乱码,需要进行decode("GB18030")才能显示中文。
