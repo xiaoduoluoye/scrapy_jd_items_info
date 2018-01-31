@@ -25,4 +25,4 @@ https://c0.3.cn/stock?skuId=3350660&area=4_48205_52493_0&venderId=1000080223&cat
 店家名称：(?<=vender":").*?(?=")
 是否有货：(?<=<strong>).*?(?=</strong>)
 
-编码方式，stock返回的response编码方式为encode("GB18030")，所以用utf-8编码后是乱码,需要进行decode("GB18030")才能显示中文。
+编码方式，stock返回的response编码方式为encode("GB18030")，所以用utf-8编码后是乱码,需要进行decode("git push -u origin masterGB18030")才能显示中文。
